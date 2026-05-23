@@ -1,0 +1,17 @@
+/* add red asterisk after before labels for required inputs */
+label.required::before {
+    content:"*";
+    color:red;
+}
+/* basic input style */
+.form-control {
+    border:2px solid #ced4da;
+    padding: 0.6rem 1rem;
+    border-radius:6px;
+    
+}
+/* focus state */
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
