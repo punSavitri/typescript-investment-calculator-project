@@ -1,0 +1,21 @@
+{
+  "name": "typescript-investment-calculator-project",
+  "version": "1.0.0",
+  "description": "A Node.js project using TypeScript",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "ts-node src/calculator.ts",
+    "build": "tsc",
+    "start": "node dist/calculator.js" 
+    
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  }
+}
