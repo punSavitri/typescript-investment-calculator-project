@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "ts-node src/calculator.ts",
     "build": "tsc",
-    "start": "node dist/calculator.js" 
-    
+    "start": "node dist/calculator.js"
   },
   "keywords": [],
   "author": "",
@@ -17,5 +16,8 @@
     "@types/node": "^25.9.1",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8"
   }
 }
