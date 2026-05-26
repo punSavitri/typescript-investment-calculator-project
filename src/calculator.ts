@@ -65,5 +65,55 @@ function calculateInvestment(data: InvestmentData):CalculationResult {
     //return all yearly results
     return annualResult;
 
-
 }
+
+//listen for the form submission event on the form with the id investment-form
+document.getElementById("investment-form")!.addEventListener("submit", function(event) {
+    //prevent the page from refreshing when the form is submitted
+    event.preventDefault();
+
+    //read the values from the input field and convert it to Number
+    const initialAmount = Number((document.getElementById("initialamount") as HTMLInputElement).value);
+    const annualContribution = Number((document.getElementById("annualcontribution") as HTMLInputElement).value);
+    const expectedReturn = Number((document.getElementById("expectedReturn") as HTMLInputElement).value);
+    const duration = Number((document.getElementById("duration") as HTMLInputElement).value);
+
+    //created an object that matches the InvestmentData type
+    const investmentData : InvestmentData = {
+        initialAmount,
+        annualContribution,
+        expectedReturn,
+        duration,
+    };
+
+    //call the calculateInvestment function and store the results
+    const results = calculateInvestment(investmentData);
+
+    //get the results div container from the index html file
+    const resultsDiv = document.getElementById("results")!;
+
+    //first clear any previouse results before displaying new ones
+    resultsDiv.innerHTML = "";
+
+    //checking if the calculationInvestment function returned an error, display it and return 
+    if (typeof results === "string") {
+        resultsDiv.innerHTML = `<p>${results}</p>`;
+        return;
+    }
+
+    //Looping through each year's result and display it web page as in bootstrap card 
+    results.forEach((year) => {
+
+        //append a new card for each year showing total, contribution and interest earned 
+        resultsDiv.innerHTML += `
+        <div class="card mb-3 shadow-sm ">
+        <div class="card-body">
+        <h5 class="card-title">${year.year}</h5>
+        <p class="card-text"><strong>Total:</strong> £${year.totalAmount.toFixed(0)}</p>
+        <p class="card-text"><strong>Contribution:</strong> £${year.totalContribution.toFixed(0)}</p>
+        <p class="card-text"><strong>Interest Earned:</strong> £${year.totalInterestEarned.toFixed(0)}</p>
+        </div>
+        </div>`;
+    })
+
+})
